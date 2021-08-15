@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth-context";
 import "./NavLinks.css";
 
 const NavLinks = (props) => {
-  const { isLoggedIn, logout} = useContext(AuthContext);
+  const { isLoggedIn, logout, userId} = useContext(AuthContext);
 
   return (
     <ul className="nav-links">
@@ -17,7 +17,7 @@ const NavLinks = (props) => {
       </li>
       {isLoggedIn && (
         <li>
-          <NavLink to="/u1/places">MY PLACES</NavLink>
+          <NavLink to={`/${userId}/places`}>MY PLACES</NavLink>
         </li>
       )}
       {isLoggedIn && (
