@@ -75,7 +75,7 @@ const Auth = () => {
           }
         );
 
-        login(responseData.user.id);
+        login(responseData.userId, responseData.token);
       } catch (err) {}
     } else {
       try {
@@ -91,7 +91,7 @@ const Auth = () => {
           formData
         );
 
-        login(responseData.user.id);
+        login(responseData.userId, responseData.token);
       } catch (error) {}
     }
   };

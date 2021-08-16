@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
-
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElements/Modal";
@@ -33,10 +32,11 @@ const PlaceItem = (props) => {
     try {
       await sendRequest(
         `http://localhost:5000/api/places/${props.id}`,
-        "DELETE"
+        "DELETE",
+        null,
+        { Authorization: `Bearer ${auth.token}` }
       );
       props.onDelete(props.id);
-
     } catch (err) {}
   };
 
@@ -80,7 +80,10 @@ const PlaceItem = (props) => {
         <Card className="place-item__content">
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
-            <img src={`http://localhost:5000/${props.image}`} alt={props.title} />
+            <img
+              src={`http://localhost:5000/${props.image}`}
+              alt={props.title}
+            />
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
